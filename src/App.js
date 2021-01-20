@@ -52,42 +52,88 @@ function App() {
 
   return (
     <div className="App">
-      <textarea
-        name="html"
-        id="css"
-        cols="30"
-        rows="10"
-        data-gramm_editor="false"
-        value={code.html}
-        onChange={(e) => setCode({ ...code, html: e.target.value })}
-      ></textarea>
-      <textarea
-        name="css"
-        id="css"
-        cols="30"
-        rows="10"
-        data-gramm_editor="false"
-        value={code.css}
-        onChange={(e) => setCode({ ...code, css: e.target.value })}
-      ></textarea>
-      <textarea
-        name="js"
-        id="js"
-        cols="30"
-        rows="10"
-        data-gramm_editor="false"
-        value={code.js}
-        onChange={(e) => setCode({ ...code, js: e.target.value })}
-      ></textarea>
-
-      <iframe
-        id="result"
-        src="result.html"
-        style={{ height: "200px", width: "200px", border: "5px solid #212121" }}
-        title="reault"
-      ></iframe>
+      <Header />
+      <div className="editors">
+        <div className="editor-wrapper">
+          <div className="editor__header">
+            <h3 className="editor__heading">HTML</h3>
+          </div>
+          <textarea
+            name="html"
+            id="css"
+            cols="30"
+            rows="10"
+            className="editor"
+            // prevent grammerly https://stackoverflow.com/questions/37444906/how-to-stop-extensions-add-ons-like-grammarly-on-contenteditable-editors
+            data-gramm_editor="false"
+            value={code.html}
+            onChange={(e) => setCode({ ...code, html: e.target.value })}
+          ></textarea>
+        </div>
+        <div className="editor-wrapper">
+          <div className="editor__header">
+            <h3 className="editor__heading">CSS</h3>
+          </div>
+          <textarea
+            name="css"
+            id="css"
+            cols="30"
+            rows="10"
+            className="editor"
+            data-gramm_editor="false"
+            value={code.css}
+            onChange={(e) => setCode({ ...code, css: e.target.value })}
+          ></textarea>
+        </div>
+        <div className="editor-wrapper">
+          <div className="editor__header">
+            <h3 className="editor__heading">JS</h3>
+          </div>
+          <textarea
+            name="js"
+            id="js"
+            cols="30"
+            rows="10"
+            className="editor"
+            data-gramm_editor="false"
+            value={code.js}
+            onChange={(e) => setCode({ ...code, js: e.target.value })}
+          ></textarea>
+        </div>
+      </div>
+      <div className="result-wrapper">
+        <iframe id="result" className="result" src="result.html" title="reault"></iframe>
+      </div>
+      <Footer />
     </div>
   );
 }
 
 export default App;
+
+const Header = () => {
+  return (
+    <div className="codepen-header">
+      <div className="codepen__info">
+        <h3 className="codepen__name" contenteditable="true">
+          woderfull pen
+        </h3>
+        <p className="codepen__author">mohamedfarid</p>
+      </div>
+      <div className="codepen__controllers">
+        <button className="btn main-btn"> save </button>
+        <button className="btn main-btn"> setting </button>
+        <button className="btn main-btn"> Change View </button>
+      </div>
+    </div>
+  );
+};
+
+const Footer = () => {
+  return (
+    <div className="codepen__footer">
+      {" "}
+      <span>footer</span>{" "}
+    </div>
+  );
+};
