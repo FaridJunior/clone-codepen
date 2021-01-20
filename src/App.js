@@ -1,4 +1,7 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
+import Footer from "./Components/Footer";
+import Header from "./Components/Header";
+import "./css/style.css";
 
 function App() {
   const [code, setCode] = useState({});
@@ -66,7 +69,7 @@ function App() {
             className="editor"
             // prevent grammerly https://stackoverflow.com/questions/37444906/how-to-stop-extensions-add-ons-like-grammarly-on-contenteditable-editors
             data-gramm_editor="false"
-            value={code.html}
+            value={code?.html}
             onChange={(e) => setCode({ ...code, html: e.target.value })}
           ></textarea>
         </div>
@@ -81,7 +84,7 @@ function App() {
             rows="10"
             className="editor"
             data-gramm_editor="false"
-            value={code.css}
+            value={code?.css}
             onChange={(e) => setCode({ ...code, css: e.target.value })}
           ></textarea>
         </div>
@@ -96,13 +99,13 @@ function App() {
             rows="10"
             className="editor"
             data-gramm_editor="false"
-            value={code.js}
+            value={code?.js}
             onChange={(e) => setCode({ ...code, js: e.target.value })}
           ></textarea>
         </div>
       </div>
       <div className="result-wrapper">
-        <iframe id="result" className="result" src="result.html" title="reault"></iframe>
+        <iframe id="result" className="result" src="result.htm" title="reault"></iframe>
       </div>
       <Footer />
     </div>
@@ -110,30 +113,3 @@ function App() {
 }
 
 export default App;
-
-const Header = () => {
-  return (
-    <div className="codepen-header">
-      <div className="codepen__info">
-        <h3 className="codepen__name" contenteditable="true">
-          woderfull pen
-        </h3>
-        <p className="codepen__author">mohamedfarid</p>
-      </div>
-      <div className="codepen__controllers">
-        <button className="btn main-btn"> save </button>
-        <button className="btn main-btn"> setting </button>
-        <button className="btn main-btn"> Change View </button>
-      </div>
-    </div>
-  );
-};
-
-const Footer = () => {
-  return (
-    <div className="codepen__footer">
-      {" "}
-      <span>footer</span>{" "}
-    </div>
-  );
-};

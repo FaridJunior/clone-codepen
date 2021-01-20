@@ -44,6 +44,9 @@ body {
 .editors {
   display: grid;
   grid-template-columns: repeat(3, auto);
+  max-width: 100%;
+  resize: vertical;
+  overflow: auto;
 }
 .editor-wrapper {
   display: grid;
@@ -58,7 +61,7 @@ body {
   margin: 0.5rem 0.2rem;
 }
 .editor-wrapper {
-  resize: both;
+  resize: horizontal;
   overflow: auto;
   width: 100%;
 }

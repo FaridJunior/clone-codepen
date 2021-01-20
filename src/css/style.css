@@ -60,6 +60,9 @@ body {
   display: grid;
   -ms-grid-columns: (auto)[3];
       grid-template-columns: repeat(3, auto);
+  max-width: 100%;
+  resize: vertical;
+  overflow: auto;
 }
 
 .editor-wrapper {
@@ -80,7 +83,7 @@ body {
 }
 
 .editor-wrapper {
-  resize: both;
+  resize: horizontal;
   overflow: auto;
   width: 100%;
 }
