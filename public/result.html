@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        background: #fff;
+      }
+    </style>
+    <title>title</title>
+  </head>
+  <body>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const style = document.createElement("style");
+        const script = document.createElement("script");
+        const code = JSON.parse(localStorage.getItem("code"));
+        document.body.innerHTML = code.html || "";
+        style.innerHTML = code.css;
+        script.innerHTML = code.js;
+        document.body.appendChild(script);
+        document.body.appendChild(style);
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,22 @@
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body,
+div {
+  padding: 0;
+  margin: 0;
+}
+
+input,
+button {
+  outline: none;
+}
+
+body {
+  background: red;
+}
+/*# sourceMappingURL=style.css.map */
