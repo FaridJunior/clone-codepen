@@ -10,11 +10,13 @@ const Header = ({ handleSave }) => {
         <p className="codepen__author">mohamedfarid</p>
       </div>
       <div className="codepen__controllers">
-        <button className="btn main-btn" onClick={handleSave}>
+        <button className="btn main-btn btn--save " onClick={handleSave}>
           save
         </button>
         <button className="btn main-btn"> setting </button>
-        <button className="btn main-btn"> Change View </button>
+        <a className="btn main-btn" href="result.htm">
+          Change View
+        </a>
       </div>
     </div>
   );

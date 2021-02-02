@@ -84,10 +84,17 @@ function App() {
             theme="monokai"
             onChange={(newValue) => setCode({ ...code, html: newValue })}
             value={code?.html}
+            defaultValue="Hello, this project is just practice. write code and press save to run it"
             name="html-editor"
             width="100%"
             height="100%"
+            fontSize={18}
+            tabSize={2}
+            wrapEnabled={true}
             editorProps={{ $blockScrolling: true }}
+            enableBasicAutocompletion={true}
+            enableLiveAutocompletion={true}
+            style={{ background: "#1D1E22" }}
           />
         </div>
         <div className="editor-wrapper">
@@ -102,7 +109,13 @@ function App() {
             name="css-editor"
             width="100%"
             height="100%"
+            fontSize={18}
+            tabSize={2}
+            wrapEnabled={true}
+            enableBasicAutocompletion={true}
+            enableLiveAutocompletion={true}
             editorProps={{ $blockScrolling: true }}
+            style={{ background: "#1D1E22" }}
           />
         </div>
         <div className="editor-wrapper">
@@ -117,7 +130,13 @@ function App() {
             name="javascript-editor"
             width="100%"
             height="100%"
-            // editorProps={{ $blockScrolling: true }}
+            fontSize={18}
+            tabSize={2}
+            wrapEnabled={true}
+            enableBasicAutocompletion={true}
+            enableLiveAutocompletion={true}
+            editorProps={{ $blockScrolling: true }}
+            style={{ background: "#1D1E22" }}
           />
         </div>
       </div>
