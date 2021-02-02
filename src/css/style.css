@@ -118,6 +118,7 @@ body {
 
 .result-wrapper {
   border-top: 16px solid #333642;
+  border-right: 16px solid #333642;
 }
 
 .result {

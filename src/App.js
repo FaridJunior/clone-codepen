@@ -1,6 +1,13 @@
 import { useState, useEffect } from "react";
 import Footer from "./Components/Footer";
 import Header from "./Components/Header";
+import AceEditor from "react-ace";
+
+import "ace-builds/src-noconflict/mode-html";
+import "ace-builds/src-noconflict/mode-css";
+import "ace-builds/src-noconflict/mode-javascript";
+import "ace-builds/src-noconflict/theme-monokai";
+
 import "./css/style.css";
 
 function App() {
@@ -31,7 +38,6 @@ function App() {
 
   useEffect(() => {
     const handleKeyDown = (event) => {
-      console.log(event.keyCode);
       if (event.keyCode === 9) {
         handelWritingTap(event);
       }
@@ -55,13 +61,13 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
+      <Header handleSave={handleSave} />
       <div className="editors">
         <div className="editor-wrapper">
           <div className="editor__header">
             <h3 className="editor__heading">HTML</h3>
           </div>
-          <textarea
+          {/* <textarea
             name="html"
             id="css"
             cols="30"
@@ -71,37 +77,48 @@ function App() {
             data-gramm_editor="false"
             value={code?.html}
             onChange={(e) => setCode({ ...code, html: e.target.value })}
-          ></textarea>
+          ></textarea> */}
+
+          <AceEditor
+            mode="html"
+            theme="monokai"
+            onChange={(newValue) => setCode({ ...code, html: newValue })}
+            value={code?.html}
+            name="html-editor"
+            width="100%"
+            height="100%"
+            editorProps={{ $blockScrolling: true }}
+          />
         </div>
         <div className="editor-wrapper">
           <div className="editor__header">
             <h3 className="editor__heading">CSS</h3>
           </div>
-          <textarea
-            name="css"
-            id="css"
-            cols="30"
-            rows="10"
-            className="editor"
-            data-gramm_editor="false"
+          <AceEditor
+            mode="css"
+            theme="monokai"
+            onChange={(newValue) => setCode({ ...code, css: newValue })}
             value={code?.css}
-            onChange={(e) => setCode({ ...code, css: e.target.value })}
-          ></textarea>
+            name="css-editor"
+            width="100%"
+            height="100%"
+            editorProps={{ $blockScrolling: true }}
+          />
         </div>
         <div className="editor-wrapper">
           <div className="editor__header">
             <h3 className="editor__heading">JS</h3>
           </div>
-          <textarea
-            name="js"
-            id="js"
-            cols="30"
-            rows="10"
-            className="editor"
-            data-gramm_editor="false"
-            value={code?.js}
-            onChange={(e) => setCode({ ...code, js: e.target.value })}
-          ></textarea>
+          <AceEditor
+            mode="javascript"
+            theme="monokai"
+            onChange={(newValue) => setCode({ ...code, javascript: newValue })}
+            value={code?.javascript}
+            name="javascript-editor"
+            width="100%"
+            height="100%"
+            // editorProps={{ $blockScrolling: true }}
+          />
         </div>
       </div>
       <div className="result-wrapper">

@@ -18,7 +18,7 @@
         const code = JSON.parse(localStorage.getItem("code"));
         document.body.innerHTML = code.html || "";
         style.innerHTML = code.css;
-        script.innerHTML = code.js;
+        script.innerHTML = code.javascript;
         document.body.appendChild(script);
         document.body.appendChild(style);
       });
