@@ -19,7 +19,7 @@ function Editor({ codeEditorType }) {
         mode={codeEditorType}
         theme="monokai"
         onChange={(newValue) => setCode({ ...code, [codeEditorType]: newValue })}
-        value={code[codeEditorType]}
+        value={code && code[codeEditorType]}
         name={`${codeEditorType}-editor`}
         width="100%"
         height="100%"
