@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Footer from "./Components/Footer";
 import Header from "./Components/Header";
 import Editor from "./Components/Editor";
+import { CodeContext } from "./Context";
 import "./css/style.css";
 
 function App() {
@@ -9,7 +10,6 @@ function App() {
 
   function handleSave() {
     localStorage.setItem("code", JSON.stringify(code));
-    console.log("here again");
     document.getElementById("result").contentWindow.location.reload();
   }
 
@@ -17,7 +17,6 @@ function App() {
     const handleKeyDown = (e) => {
       if (e.keyCode === 83 && e.ctrlKey) {
         e.preventDefault();
-        console.log("here");
         handleSave();
       }
     };
@@ -36,16 +35,18 @@ function App() {
 
   return (
     <div className="App">
-      <Header handleSave={handleSave} />
-      <div className="editors">
-        <Editor code={code} setCode={setCode} codeEditorType="html" />
-        <Editor code={code} setCode={setCode} codeEditorType="css" />
-        <Editor code={code} setCode={setCode} codeEditorType="javascript" />
-      </div>
-      <div className="result-wrapper">
-        <iframe id="result" className="result" src="result.htm" title="reault"></iframe>
-      </div>
-      <Footer />
+      <CodeContext.Provider value={{ code, setCode }}>
+        <Header handleSave={handleSave} />
+        <div className="editors">
+          <Editor codeEditorType="html" />
+          <Editor codeEditorType="css" />
+          <Editor codeEditorType="javascript" />
+        </div>
+        <div className="result-wrapper">
+          <iframe id="result" className="result" src="result.htm" title="reault"></iframe>
+        </div>
+        <Footer />
+      </CodeContext.Provider>
     </div>
   );
 }

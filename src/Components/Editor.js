@@ -1,16 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import AceEditor from "react-ace";
-
 import "ace-builds/src-noconflict/mode-html";
 import "ace-builds/src-noconflict/mode-css";
 import "ace-builds/src-noconflict/mode-javascript";
 import "ace-builds/src-noconflict/theme-monokai";
+import { CodeContext } from "../Context";
 
-function Editor({ code, setCode, codeEditorType }) {
+function Editor({ codeEditorType }) {
+  const { code, setCode } = useContext(CodeContext);
   return (
     <div className="editor-wrapper">
       <div className="editor__header">
-        <h3 className="editor__heading">JS</h3>
+        <h3 className="editor__heading">
+          {codeEditorType === "javascript" ? "JS" : codeEditorType}
+        </h3>
       </div>
       <AceEditor
         mode={codeEditorType}
